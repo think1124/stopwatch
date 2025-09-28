@@ -30,8 +30,8 @@ except ImportError:
     icon_base64 = ""
 
 # ================== 버전 설정 ==================
-CURRENT_VERSION = "1.0"
-DISABLED_VIDEOS = [] # 비활성화할 영상 없음
+CURRENT_VERSION = "0.9"
+DISABLED_VIDEOS = ["Sunset Cat"] # 메뉴에서 비활성화할 영상 이름
 # ============================================
 
 BLOCK_CHECK_URL = "https://raw.githubusercontent.com/think1124/stopwatch/main/status.json"
@@ -189,8 +189,9 @@ class VideoStopwatch(QWidget):
         background_menu = menu.addMenu("배경 영상 변경")
         if self.video_paths:
             for video_name in self.video_paths.keys():
+                # 이 부분이 비활성화 로직의 핵심입니다.
                 if video_name in DISABLED_VIDEOS:
-                    continue # 비활성화된 영상은 메뉴에 추가하지 않고 건너뜁니다.
+                    continue
                 
                 action = QAction(video_name, self, checkable=True)
                 if self.current_video_path == self.video_paths[video_name]: action.setChecked(True)
@@ -279,8 +280,8 @@ class VideoStopwatch(QWidget):
             latest_info = response.json()
             latest_version_str = latest_info.get("version")
 
-            current_version_tuple = tuple(map(int, (CURRENT_VERSION.split("."))))
-            latest_version_tuple = tuple(map(int, (latest_version_str.split("."))))
+            current_version_tuple = tuple(map(float, (CURRENT_VERSION.split("."))))
+            latest_version_tuple = tuple(map(float, (latest_version_str.split("."))))
 
             if latest_version_str and latest_version_tuple > current_version_tuple:
                 msg_box = self._create_message_box("업데이트", f"{latest_version_str} 버전으로 업데이트합니다.")
