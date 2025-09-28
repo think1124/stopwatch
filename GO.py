@@ -30,8 +30,8 @@ except ImportError:
     icon_base64 = ""
 
 # ================== 버전 설정 ==================
-CURRENT_VERSION = "0.9"
-DISABLED_VIDEOS = ["Sunset Cat"] # 메뉴에서 비활성화할 영상 이름
+CURRENT_VERSION = "1.0"
+DISABLED_VIDEOS = [] # 비활성화할 영상 없음
 # ============================================
 
 BLOCK_CHECK_URL = "https://raw.githubusercontent.com/think1124/stopwatch/main/status.json"
