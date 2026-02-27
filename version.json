@@ -1,6 +1,6 @@
 {
   "win": {
-    "version": "4.0",
+    "version": "5.0",
     "url": "https://github.com/.../Go_mini_win.zip"
   },
   "mac": {
@@ -8,6 +8,7 @@
     "url": "https://github.com/.../Go_mini_mac.zip"
   }
 }
+
 
 
 
